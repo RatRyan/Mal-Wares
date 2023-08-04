@@ -1,2 +1,2 @@
 # Mal-Wares
-Projects class project
+PRO100-SC2 class project
