@@ -1,2 +1,4 @@
 # Mal-Wares
-PRO100-SC2 class project
+## an e-commerce website that sells scams
+
+lorem ipsum
