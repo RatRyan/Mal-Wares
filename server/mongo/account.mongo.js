@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb"
+const { MongoClient } = require("mongodb");
 // Replace the uri string with your connection string.
 const uri = "mongodb://localhost:2720";
 

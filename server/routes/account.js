@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const dal = require('../data/account.mongo.js')
+const dal = require('../mongo/account.mongo.js')
 const fs = require('fs')
 
 //done
