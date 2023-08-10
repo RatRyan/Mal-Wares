@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite client",
-    "start": "ts-node ./server/index.ts",
+    "start": "node ./server/index.js",
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
