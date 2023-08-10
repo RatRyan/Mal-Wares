@@ -7,8 +7,7 @@ const createAccount = (req, res) =>{
         username: req.body.username,
         password: bcrypt.hashSync(req.body.password, salt)
     }
-
-    res.redirect('/');
+    res.sendStatus(200);
 };
 
 const login = (req, res) =>{
