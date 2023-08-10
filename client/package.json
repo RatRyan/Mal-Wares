@@ -2,13 +2,14 @@
   "name": "client",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "vite client",
+    "start": "ts-node ./server/index.ts",
+    "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "nodemon": "^3.0.1",
     "vue": "^3.3.4"
   },
   "devDependencies": {

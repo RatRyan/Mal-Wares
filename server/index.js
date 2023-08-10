@@ -1,14 +1,19 @@
-import express from 'express';
-import session from 'express-session';
+const express = require('express')
 
-const app = express();
+const app = express()
+const port = 3000;
 
-app.use(session({
-    secret: 'this is a very secret code',
-    saveUninitialized: true,
-    resave: false
-}));
+app.use(express.json())
 
-app.set("/", )
+app.get('/', (req, res) => {
+    res.send('Welcome to the Account API!')
+})
 
-app.listen(3000);
+// rout to get
+const accountRoutes = require('./routes/account.js')
+app.use('/account', accountRoutes)
+
+// listen
+app.listen(port, () => {
+    console.log('API Service listening at localhost:' + port)
+})
