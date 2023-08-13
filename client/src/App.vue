@@ -1,9 +1,7 @@
 <template>
-  <h1>Mal-Wares</h1>
+  <RouterView></RouterView>
 </template>
 
 <script>
-export default {
-
-}
+import { RouterView } from 'vue-router';
 </script>
