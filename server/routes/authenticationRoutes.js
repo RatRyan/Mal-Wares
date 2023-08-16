@@ -1,7 +1,8 @@
-// import bcrypt from 'bcryptjs';
 const bcrypt = require('bcryptjs');
-// import mongo from '../mongo/account.mongo.js';
 const mongo = require('../mongo/account.mongo.js');
+const jws = require('jsonwebtoken')
+const express = require('express');
+const router = express.Router()
 
 const createAccount = (req, res) =>{
     mongo.Get({email: req.body.email},()=>{
@@ -15,28 +16,30 @@ const createAccount = (req, res) =>{
     }
 
     mongo.Post(user, ()=>{
-        req.session.user = {
-            isAuthenticated: true,
-            email: user.email
-        }
-        res.sendStatus(200);
+        const token = jws.sign({email: user.email}, "random key", {expiresIn: "20m"})
+        // req.session.user = {
+        //     isAuthenticated: true,
+        //     email: user.email
+        // }
+        res.sendStatus(200).json(token);
     });
 };
 
 const login = (req, res) =>{
     mongo.Get({email:req.body.email},(user)=>{
         if(bcrypt.compareSync(req.body.password, user.password)){
-            req.session.user = {
-                isAuthenticated: true,
-                email: user.email
-            }
-            res.sendStatus(200)
+            const token = jws.sign({email: user.email}, "random key", {expiresIn: "20m"})
+            // req.session.user = {
+            //     isAuthenticated: true,
+            //     email: user.email
+            // }
+            res.sendStatus(200).json(token)
         }
     })
     res.sendStatus(400)
 };
 
-module.exports = {
-    createAccount,
-    login
-}
+router.post('/register', createAccount)
+router.post('/login', login)
+
+module.exports = router
