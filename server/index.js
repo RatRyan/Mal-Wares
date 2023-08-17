@@ -11,7 +11,9 @@ app.get('/', (req, res) => {
 
 // rout to get
 const accountRoutes = require('./routes/account.js')
-app.use('/account', accountRoutes)
+const authRoutes = require('./routes/authenticationRoutes.js')
+// app.use('/account', accountRoutes)
+app.use('/account', authRoutes)
 
 // listen
 app.listen(port, () => {
