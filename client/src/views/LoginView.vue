@@ -1,4 +1,5 @@
 <template>
+  <Navbar></Navbar>
   <div class="d-flex flex-column justify-content-center min-vh-100">
     <div class="login-form container bg-white">
       <form class="d-flex flex-column">
@@ -31,6 +32,7 @@
 
 <script setup>
 import { RouterLink } from "vue-router";
+import Navbar from "../components/Navbar.vue";
 </script>
 
 <style scoped>

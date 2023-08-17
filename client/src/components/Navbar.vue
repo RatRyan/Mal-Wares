@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar sticky-top bg-body-tertiary px-5">
+  <nav class="navbar sticky-top bg-dark px-5">
     <div class="container-fluid">
       <RouterLink class="navbar-brand" to="/">Mal-Wares</RouterLink>
       <RouterLink tag="button" to="/login">
@@ -12,3 +12,9 @@
 <script setup>
 import { RouterLink } from "vue-router";
 </script>
+
+<style scoped>
+.navbar-brand {
+  color: white;
+}
+</style>
