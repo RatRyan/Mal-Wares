@@ -2,7 +2,7 @@
   <Navbar></Navbar>
   <div class="d-flex flex-column justify-content-center min-vh-100">
     <div class="login-form container bg-white">
-      <form class="d-flex flex-column">
+      <form @submit.prevent="registerAccount()" class="d-flex flex-column">
         <h2>Register</h2>
         <div class="d-flex">
           <div class="name-field">
@@ -14,8 +14,9 @@
               <br />
               <input
                 class="form-control border-start-0"
-                type="email"
-                id="email"
+                type="text"
+                id="firstName"
+                v-model="firstName"
               />
             </div>
           </div>
@@ -23,8 +24,9 @@
             <label>Last Name:</label>
             <input
               class="form-control border-start-0"
-              type="email"
-              id="email"
+              type="text"
+              id="lastName"
+              v-model="lastName"
             />
           </div>
         </div>
@@ -33,7 +35,12 @@
           <span class="input-group-text">
             <i class="bi bi-envelope" />
           </span>
-          <input class="form-control border-start-0" type="email" id="email" />
+          <input
+            class="form-control border-start-0"
+            type="email"
+            id="email"
+            v-model="email"
+          />
         </div>
         <label>Password:</label>
         <div class="input-group">
@@ -44,14 +51,13 @@
             class="form-control border-start-0"
             type="password"
             id="password"
+            v-model="password"
           />
         </div>
-        <button class="btn btn-primary mt-5">Register</button>
-        <hr>
-        <div class="d-flex">
-          <RouterLink to="/login">Already have an account? Login</RouterLink>
-        </div>
+        <button class="btn btn-primary mt-5" type="submit">Register</button>
       </form>
+      <hr />
+      <RouterLink to="/login">Already have an account? Login</RouterLink>
     </div>
   </div>
 </template>
@@ -59,6 +65,28 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import Navbar from "../components/Navbar.vue";
+import axios from "axios";
+import { ref } from "vue";
+let firstName = ref("");
+let lastName = ref("");
+let email = ref("");
+let password = ref("");
+
+async function registerAccount() {
+  try {
+    const res = await axios.post("localhost:3000/account/register", {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      address: "ur moms house",
+      password: password
+    })
+    const data = await res.data
+    console.log(data)
+  } catch (err) {
+
+  }
+}
 </script>
 
 <style scoped>
