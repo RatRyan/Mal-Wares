@@ -64,7 +64,7 @@
 
 <script setup>
 import { RouterLink } from "vue-router";
-import Navbar from "../components/Navbar.vue";
+import Navbar from "../components/NavBar.vue";
 import axios from "axios";
 import { ref } from "vue";
 let firstName = ref("");
@@ -74,13 +74,7 @@ let password = ref("");
 
 async function registerAccount() {
   try {
-    const res = await axios.post("localhost:3000/account/register", {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      address: "ur moms house",
-      password: password
-    })
+    const res = await axios.get("localhost:8080/")
     const data = await res.data
     console.log(data)
   } catch (err) {
