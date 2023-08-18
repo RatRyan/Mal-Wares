@@ -19,47 +19,47 @@ const exicuteQuery = async (query) => {
 const GetProduct = async (body, callback) => {
     exicuteQuery(async (client) => {
         const database = client.db('Store');
-        const Products = database.collection('Products');
-        const cursor = Products.find(body)
+        const Accounts = database.collection('Accounts');
+        const cursor = Accounts.find(body)
         const docArray = await cursor.toArray()
         callback(docArray)
     })
 }
 
 
-const PostProduct = (body, callback) => {
+const PostAccount = (body, callback) => {
     exicuteQuery(async (client) => {
         const database = client.db('Store');
-        const Products = database.collection('Products');
-        await Products.insertOne(body);
+        const Accounts = database.collection('Accounts');
+        await Accounts.insertOne(body);
         callback()
     })
 }
 
-const PatchProduct = (body, callback) => {
+const PatchAccount = (body, callback) => {
     exicuteQuery(async (client) => {
         const database = client.db('Store');
-        const Products = database.collection('Products');
+        const Accounts = database.collection('Accounts');
         const options = { upsert: true };
         const set = { $set: body[1] }
-        await Products.updateOne(body[0], set, options);
+        await Accounts.updateOne(body[0], set, options);
         callback()
     })
 }
 
-const DeleteProduct = async (body, callback) => {
+const DeleteAccount = async (body, callback) => {
     exicuteQuery(async (client) => {
         const database = client.db('Store');
-        const Products = database.collection('Products');
+        const Accounts = database.collection('Accounts');
         const query = body;
-        await Products.deleteOne(query);
+        await Accounts.deleteOne(query);
         callback()
     })
 }
 
 module.exports = {
-    Post: PostProduct,
-    Get: GetProduct,
-    Patch: PatchProduct,
-    Delete: DeleteProduct,
+    Post: PostAccount,
+    Get: GetAccount,
+    Patch: PatchAccount,
+    Delete: DeleteAccount,
 }
