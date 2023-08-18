@@ -16,9 +16,9 @@ async function sendEmail(body, callback) {
   try{
   const info = await transporter.sendMail({
     from: 'Mal.Wares.Business@gmail.com', // sender address
-    to: "damienkrock@gmail.com", // list of receivers
-    subject: "Hello ✔", // Subject line
-    text: "Hello world?" // plain text body
+    to: body['Email'], // list of receivers
+    subject: body['Subject'], // Subject line
+    text: body['Message'] // plain text body
   });
   console.log("Message sent: %s", info.messageId);
 }catch(error){console.log(error);}
