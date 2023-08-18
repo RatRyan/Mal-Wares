@@ -11,9 +11,13 @@ app.get('/', (req, res) => {
 
 // rout to get
 const accountRoutes = require('./routes/account.js')
+const emailRoutes = require('./routes/emailRoute.js')
 const authRoutes = require('./routes/authenticationRoutes.js')
 // app.use('/account', accountRoutes)
 app.use('/account', authRoutes)
+
+// rout to email
+app.use('/email', emailRoutes)
 
 // listen
 app.listen(port, () => {

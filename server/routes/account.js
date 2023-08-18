@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const dal = require('../mongo/account.mongo.js')
-const fs = require('fs')
 
 const post = (req, res) => {
     try {
