@@ -10,10 +10,12 @@ app.get('/', (req, res) => {
 })
 
 // rout to get
-const accountRoutes = require('./routes/account.js')
-const authRoutes = require('./routes/authenticationRoutes.js')
+const accountRoutes = require('./routes/account.js');
+const authRoutes = require('./routes/authenticationRoutes.js');
+const cartRoutes = require('./routes/cartRoutes.js');
 // app.use('/account', accountRoutes)
-app.use('/account', authRoutes)
+app.use('/account', authRoutes);
+app.use('/cart', cartRoutes);
 
 // listen
 app.listen(port, () => {

@@ -15,7 +15,7 @@ const createAccount = async (req, res) =>{
             email: req.body.email,
             firstName: req.body.firstName,
             lastName: req.body.lastName,
-            address: req.body.address,
+            // address: req.body.address,
             isAdmin: false,
             password: bcrypt.hashSync(req.body.password, salt)
         }
@@ -44,6 +44,6 @@ const login = (req, res) =>{
 };
 
 router.post('/register', express.json(), createAccount);
-router.post('/login', express.json(), login);
+router.get('/login', express.json(), login);
 
 module.exports = router;
