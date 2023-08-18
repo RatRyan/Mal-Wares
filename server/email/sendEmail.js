@@ -1,13 +1,12 @@
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-  host: "smtp-relay.brevo.com",
-  port: 587,
-  secure: true,
+  host: 'smtp-relay.brevo.com', // SMTP server (e.g., smtp.gmail.com for Gmail)
+  port: 587, // Port for secure SMTP
+  secure: false, // true for 465, false for other ports
   auth: {
-    // TODO: replace `user` and `pass` values from <https://forwardemail.net>
-    user: 'Mal.Wares.Business@gmail.com',
-    pass: '3pvLwO7qtgaHMcUE'
+    user: 'Mal.Wares.Business@gmail.com', // Your email address
+    pass: '3pvLwO7qtgaHMcUE' // Your email password or app-specific password
   }
 });
 
@@ -19,11 +18,10 @@ async function sendEmail(body, callback) {
     from: 'Mal.Wares.Business@gmail.com', // sender address
     to: "damienkrock@gmail.com", // list of receivers
     subject: "Hello ✔", // Subject line
-    text: "Hello world?", // plain text body
-    html: "<b>Hello world?</b>", // html body
+    text: "Hello world?" // plain text body
   });
   console.log("Message sent: %s", info.messageId);
-}catch(error){error}
+}catch(error){console.log(error);}
   callback()
 }
 
