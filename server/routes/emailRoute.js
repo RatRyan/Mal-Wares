@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const dal = require('../email/sentEmail.js')
+const dal = require('../email/sendEmail.js')
 
 const post = (req, res) => {
     try {

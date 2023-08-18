@@ -21,10 +21,10 @@ async function sendEmail(body, callback) {
     text: "Hello world?", // plain text body
     html: "<b>Hello world?</b>", // html body
   });
+  console.log("Message sent: %s", info.messageId);
   callback()
 }
 
-  console.log("Message sent: %s", info.messageId);
 
 
   module.exports = {
