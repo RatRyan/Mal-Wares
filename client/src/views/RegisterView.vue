@@ -3,7 +3,7 @@
   <div class="d-flex flex-column justify-content-center min-vh-100">
     <div class="login-form container bg-white">
       <form
-        @submit.prevent="user.registerAccount(firstName, lastName, email)"
+        @submit.prevent="user.registerAccount(firstName, lastName, email, password)"
         class="d-flex flex-column"
       >
         <h2>Register</h2>
