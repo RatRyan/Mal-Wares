@@ -2,7 +2,10 @@
   <Navbar></Navbar>
   <div class="d-flex flex-column justify-content-center min-vh-100">
     <div class="login-form container bg-white">
-      <form class="d-flex flex-column">
+      <form
+        @submit.prevent="user.registerAccount(firstName, lastName, email, password)"
+        class="d-flex flex-column"
+      >
         <h2>Register</h2>
         <div class="d-flex">
           <div class="name-field">
@@ -14,8 +17,9 @@
               <br />
               <input
                 class="form-control border-start-0"
-                type="email"
-                id="email"
+                type="text"
+                id="firstName"
+                v-model="firstName"
               />
             </div>
           </div>
@@ -23,8 +27,9 @@
             <label>Last Name:</label>
             <input
               class="form-control border-start-0"
-              type="email"
-              id="email"
+              type="text"
+              id="lastName"
+              v-model="lastName"
             />
           </div>
         </div>
@@ -33,32 +38,39 @@
           <span class="input-group-text">
             <i class="bi bi-envelope" />
           </span>
-          <input class="form-control border-start-0" type="email" id="email" />
+          <input
+            class="form-control border-start-0"
+            type="email"
+            id="email"
+            v-model="email"
+          />
         </div>
         <label>Password:</label>
         <div class="input-group">
-          <span class="input-group-text"
-            ><i class="bi bi-shield-lock"></i
-          ></span>
+          <span class="input-group-text">
+            <i class="bi bi-shield-lock" />
+          </span>
           <input
             class="form-control border-start-0"
             type="password"
             id="password"
+            v-model="password"
           />
         </div>
-        <button class="btn btn-primary mt-5">Register</button>
-        <hr>
-        <div class="d-flex">
-          <RouterLink to="/login">Already have an account? Login</RouterLink>
-        </div>
+        <button class="btn btn-primary mt-5" type="submit">Register</button>
       </form>
+      <hr />
+      <RouterLink to="/login">Already have an account? Login</RouterLink>
     </div>
   </div>
 </template>
 
 <script setup>
-import { RouterLink } from "vue-router";
-import Navbar from "../components/Navbar.vue";
+import { RouterLink } from 'vue-router';
+import { useUserStore } from '../stores/UserStore';
+import Navbar from '../components/NavBar.vue';
+
+const user = useUserStore();
 </script>
 
 <style scoped>

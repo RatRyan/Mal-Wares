@@ -32,7 +32,7 @@
 
 <script setup>
 import { RouterLink } from "vue-router";
-import Navbar from "../components/Navbar.vue";
+import Navbar from "../components/NavBar.vue";
 </script>
 
 <style scoped>
@@ -41,11 +41,5 @@ import Navbar from "../components/Navbar.vue";
   padding: 40px;
   border-radius: 10px;
   box-shadow: 0px 0px 20px 2px rgb(118, 118, 118);
-}
-a {
-  text-decoration: none;
-}
-h2:hover {
-  color: blue;
 }
 </style>
