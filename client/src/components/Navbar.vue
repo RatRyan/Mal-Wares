@@ -9,6 +9,10 @@
 
 <script setup>
 import { RouterLink } from "vue-router";
+import { useUserStore } from "../stores/UserStore";
+
+const user = useUserStore()
+
 </script>
 
 <style scoped>

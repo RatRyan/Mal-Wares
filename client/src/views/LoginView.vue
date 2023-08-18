@@ -42,10 +42,4 @@ import Navbar from "../components/NavBar.vue";
   border-radius: 10px;
   box-shadow: 0px 0px 20px 2px rgb(118, 118, 118);
 }
-a {
-  text-decoration: none;
-}
-h2:hover {
-  color: blue;
-}
 </style>

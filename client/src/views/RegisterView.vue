@@ -2,7 +2,10 @@
   <Navbar></Navbar>
   <div class="d-flex flex-column justify-content-center min-vh-100">
     <div class="login-form container bg-white">
-      <form @submit.prevent="registerAccount()" class="d-flex flex-column">
+      <form
+        @submit.prevent="user.registerAccount(firstName, lastName, email)"
+        class="d-flex flex-column"
+      >
         <h2>Register</h2>
         <div class="d-flex">
           <div class="name-field">
@@ -44,9 +47,9 @@
         </div>
         <label>Password:</label>
         <div class="input-group">
-          <span class="input-group-text"
-            ><i class="bi bi-shield-lock"></i
-          ></span>
+          <span class="input-group-text">
+            <i class="bi bi-shield-lock" />
+          </span>
           <input
             class="form-control border-start-0"
             type="password"
@@ -63,24 +66,11 @@
 </template>
 
 <script setup>
-import { RouterLink } from "vue-router";
-import Navbar from "../components/NavBar.vue";
-import axios from "axios";
-import { ref } from "vue";
-let firstName = ref("");
-let lastName = ref("");
-let email = ref("");
-let password = ref("");
+import { RouterLink } from 'vue-router';
+import { useUserStore } from '../stores/UserStore';
+import Navbar from '../components/NavBar.vue';
 
-async function registerAccount() {
-  try {
-    const res = await axios.get("localhost:8080/")
-    const data = await res.data
-    console.log(data)
-  } catch (err) {
-
-  }
-}
+const user = useUserStore();
 </script>
 
 <style scoped>
