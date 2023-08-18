@@ -16,7 +16,7 @@ const exicuteQuery = async (query) => {
 }
 
 
-const GetProduct = async (body, callback) => {
+const GetAccount = async (body, callback) => {
     exicuteQuery(async (client) => {
         const database = client.db('Store');
         const Accounts = database.collection('Accounts');
