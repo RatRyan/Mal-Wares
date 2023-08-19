@@ -2,10 +2,9 @@
   <Navbar></Navbar>
   <div class="d-flex flex-column justify-content-center min-vh-100">
     <div class="login-form container bg-white">
-      <form
-        @submit.prevent="user.registerAccount(firstName, lastName, email, password)"
-        class="d-flex flex-column"
-      >
+      <form @submit.prevent="
+        user.registerAccount(firstName, lastName, email, password)
+        " class="d-flex flex-column">
         <h2>Register</h2>
         <div class="d-flex">
           <div class="name-field">
@@ -15,47 +14,28 @@
                 <i class="bi bi-person" />
               </span>
               <br />
-              <input
-                class="form-control border-start-0"
-                type="text"
-                id="firstName"
-                v-model="firstName"
-              />
+              <input class="form-control border-start-0" type="text" id="firstName" name="firstName"
+                v-model="firstName" />
             </div>
           </div>
           <div class="name-field mr-1">
             <label>Last Name:</label>
-            <input
-              class="form-control border-start-0"
-              type="text"
-              id="lastName"
-              v-model="lastName"
-            />
+            <input class="form-control border-start-0" type="text" id="lastName" name="lastName" v-model="lastName" />
           </div>
         </div>
-        <label>Email:</label>
+        <label for="email">Email:</label>
         <div class="input-group">
           <span class="input-group-text">
             <i class="bi bi-envelope" />
           </span>
-          <input
-            class="form-control border-start-0"
-            type="email"
-            id="email"
-            v-model="email"
-          />
+          <input class="form-control border-start-0" type="email" id="email" v-model="email" />
         </div>
         <label>Password:</label>
         <div class="input-group">
           <span class="input-group-text">
             <i class="bi bi-shield-lock" />
           </span>
-          <input
-            class="form-control border-start-0"
-            type="password"
-            id="password"
-            v-model="password"
-          />
+          <input class="form-control border-start-0" type="password" id="password" v-model="password" />
         </div>
         <button class="btn btn-primary mt-5" type="submit">Register</button>
       </form>
@@ -77,12 +57,13 @@ const user = useUserStore();
 .name-field {
   width: 50%;
 }
+
 .login-form {
   max-width: 450px;
   padding: 40px;
-  border-radius: 10px;
   box-shadow: 0px 0px 20px 2px rgb(118, 118, 118);
 }
+
 a {
   text-decoration: none;
 }
