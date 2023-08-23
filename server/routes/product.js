@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const dal = require('../mongo/account.mongo.js')
+const dal = require('../mongo/product.mongo.js')
 const fs = require('fs')
 
 const post = (req, res) => {
