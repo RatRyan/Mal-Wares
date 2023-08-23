@@ -3,6 +3,7 @@ const mongo = require('../mongo/account.mongo.js');
 const jws = require('jsonwebtoken');
 const express = require('express');
 const router = express.Router();
+const email = require('../email/sendEmail.js');
 
 const createAccount = async (req, res) =>{
     await mongo.Get({email: req.body.email},(docs)=>{
@@ -21,6 +22,7 @@ const createAccount = async (req, res) =>{
         }
 
         mongo.Post(user, ()=>{
+            email.sendAccountMadeEmail(user.email);
             const token = jws.sign({email: user.email, firstName: user.firstName}, "random key", {expiresIn: "20m"});
             res.status(200).json({token: token, email: user.email, firstName: user.firstName});
         });
