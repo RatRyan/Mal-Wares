@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex flex-column vh-100">
     <NavBar></NavBar>
-    <div class="d-flex flex-grow-1 align-items-center">
+    <div class="d-flex flex-grow-1">
       <RouterView />
     </div>
   </div>
