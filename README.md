@@ -1,2 +1,2 @@
 # Mal-Wares
-First project for Introductory Projects class
+Only project for Introductory Projects class

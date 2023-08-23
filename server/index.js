@@ -18,6 +18,10 @@ app.use('/account', authRoutes);
 app.use('/cart', cartRoutes);
 app.use('/product', productRoutes);
 
+// rout to email
+const emailRoutes = require('./routes/emailRoute.js')
+app.use('/email', emailRoutes)
+
 // listen
 app.listen(port, () => {
     console.log('API Service listening at localhost:' + port)
