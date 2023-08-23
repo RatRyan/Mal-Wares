@@ -22,6 +22,7 @@ async function sendEmail(recipient, subject, message) {
   });
   console.log("Message sent: %s", info.messageId);
 }catch(error){console.log(error);}
+}
 
 function sendAccountMadeEmail(recipient) {
   Subject = "Welcome to Mal Wares!"
@@ -36,8 +37,6 @@ function sendOrderMadeEmail(recipient) {
 }
 
 
-
-}
   module.exports = {
     sendAccountMadeEmail: sendAccountMadeEmail,
     sendOrderMadeEmail: sendOrderMadeEmail
