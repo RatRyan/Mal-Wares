@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
 
 // rout to get
 const productRoutes = require('./routes/product.js');
-const authRoutes = require('./routes/authenticationRoutes.js');
+const authRoutes = require('./routes/account.js');
 const cartRoutes = require('./routes/cartRoutes.js');
 // app.use('/account', accountRoutes)
 app.use('/account', authRoutes);
