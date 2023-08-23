@@ -1,8 +1,7 @@
 const { MongoClient } = require("mongodb");
-// Replace the uri string with your connection string.
-const uri = "mongodb://localhost:2720";
+const uri = "mongodb://localhost:2717";
 
-const exicuteQuery = async (query) => {
+const executeQuery = async (query) => {
     const client = new MongoClient(uri)
     try {
         await query(client)
@@ -15,9 +14,8 @@ const exicuteQuery = async (query) => {
     }
 }
 
-
 const GetAccount = async (body, callback) => {
-    exicuteQuery(async (client) => {
+    executeQuery(async (client) => {
         const database = client.db('Store');
         const Accounts = database.collection('Accounts');
         const cursor = Accounts.find(body)
@@ -26,9 +24,8 @@ const GetAccount = async (body, callback) => {
     })
 }
 
-
 const PostAccount = (body, callback) => {
-    exicuteQuery(async (client) => {
+    executeQuery(async (client) => {
         const database = client.db('Store');
         const Accounts = database.collection('Accounts');
         await Accounts.insertOne(body);
@@ -37,7 +34,7 @@ const PostAccount = (body, callback) => {
 }
 
 const PatchAccount = (body, callback) => {
-    exicuteQuery(async (client) => {
+    executeQuery(async (client) => {
         const database = client.db('Store');
         const Accounts = database.collection('Accounts');
         const options = { upsert: true };
@@ -48,7 +45,7 @@ const PatchAccount = (body, callback) => {
 }
 
 const DeleteAccount = async (body, callback) => {
-    exicuteQuery(async (client) => {
+    executeQuery(async (client) => {
         const database = client.db('Store');
         const Accounts = database.collection('Accounts');
         const query = body;

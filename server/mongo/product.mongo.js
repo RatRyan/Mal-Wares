@@ -1,6 +1,5 @@
 const { MongoClient } = require("mongodb");
-// Replace the uri string with your connection string.
-const uri = "mongodb://localhost:2720";
+const uri = "mongodb://localhost:2717";
 
 const exicuteQuery = async (query) => {
     const client = new MongoClient(uri)
