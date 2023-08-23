@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const mongo = require('../mongo/account.mongo.js');
+const jws = require('jsonwebtoken');
+const express = require('express');
+const router = express.Router();
+const email = require('../email/sendEmail.js');
 
 const createAccount = async (req, res) => {
     await mongo.Get({ email: req.body.email }, (docs) => {

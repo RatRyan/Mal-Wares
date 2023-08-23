@@ -62,3 +62,23 @@ module.exports = {
     Patch: PatchProduct,
     Delete: DeleteProduct,
 }
+
+// body for scams:
+ScamOne = {
+    "ID":"419",
+    "Name":"Nigerian Prince",
+    "Price":"$59.99",
+    "Description":"We have a long line of nigerians princes who are willing to give you money! For just 59.99 we can give you the contact information of these nigerians!"
+}
+ScamTwo = {
+    "ID":"360",
+    "Name":"Armour Trimming",
+    "Price":"$29.99",
+    "Description":"We have a master armour trimmer who can trim your armour for just 29.99! With this Purches you will you can get your armour trimmed for free!"
+}
+ScamThree = {
+    "ID":"777",
+    "Name":"Lottery Numbers",
+    "Price":"$599.99",
+    "Description":"We have insider intell on the lottery numbers for the next 10 years! For just $599.99 we can give you the winning numbers for the next 10 years!"
+}

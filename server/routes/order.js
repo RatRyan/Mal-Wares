@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const userdb = require('../mongo/account.mongo.js');
 const productdb = require('../mongo/product.mongo.js');
+const email = require('../email/sendEmail.js');
 
 const getUserOrders = (req, res)=>{
     userdb.Get({email: req.body.user.email}, (userList)=>{
@@ -33,7 +34,8 @@ const createOrder = (req, res)=>{
         orders.push(newOrder);
 
         userdb.Patch([{email: user.email}, {cart:[], orders: orders}],()=>{
-            res.status(200)
+            email.sendOrderMadeEmail(user.email);
+            res.status(200);
         });
     })
 }
@@ -61,8 +63,14 @@ const orderCart = async (req, res)=>{
         orders.push(newOrder);
 
         userdb.Patch([{email: user.email}, {cart:[], orders: orders}],()=>{
-            res.status(200)
+            email.sendOrderMadeEmail(user.email);
+            res.status(200);
         });
     })
 }
 
+router.get('/', getUserOrders);
+router.post('/', createOrder);
+router.post('/cart', orderCart);
+
+module.exports = router;
