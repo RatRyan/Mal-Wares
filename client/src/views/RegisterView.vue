@@ -37,7 +37,9 @@
                     </span>
                     <input class="form-control border-start-0" type="password" id="password" v-model="password" />
                 </div>
-                <button class="btn btn-dark mt-5" type="submit">Register</button>
+                <button class="btn btn-dark mt-5" type="submit">
+                    Register
+                </button>
             </form>
             <hr />
             <RouterLink to="/login">Already have an account? Login</RouterLink>
@@ -50,10 +52,10 @@ import { RouterLink } from 'vue-router';
 import { useUserStore } from '../stores/UserStore';
 import { ref } from 'vue';
 
-let firstName = ref('')
-let lastName = ref('')
-let email = ref('')
-let password = ref('')
+let firstName = ref('');
+let lastName = ref('');
+let email = ref('');
+let password = ref('');
 
 const user = useUserStore();
 </script>
