@@ -1,5 +1,5 @@
 const { MongoClient } = require("mongodb");
-const uri = "mongodb://localhost:2717";
+const uri = "mongodb+srv://malwaresbusiness:4tmfifKJOjZEIvz9@malwarescluster.vsyaobr.mongodb.net/?retryWrites=true&w=majority";
 
 const exicuteQuery = async (query) => {
     const client = new MongoClient(uri)
