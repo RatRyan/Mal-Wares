@@ -6,12 +6,15 @@
         <RouterLink tag="button" to="/login">
           <h3 class="account-icon">{{ user.firstName }}<i class="bi bi-person mx-3"></i></h3>
         </RouterLink>
-        <RouterLink tag="button" to="/login">
+        <RouterLink tag="button" to="/cart">
           <h3><i class="bi bi-cart3 mx-3"></i></h3>
         </RouterLink>
         <h3 v-if="user.loggedIn" @click="user.logout()">
           <i class="bi bi-box-arrow-right mx-3"></i>
         </h3>
+        <RouterLink tag="button" to="/products">
+          <h3>Products</h3>
+        </RouterLink>
       </form>
     </div>
   </nav>

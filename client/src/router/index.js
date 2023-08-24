@@ -21,8 +21,14 @@ export default createRouter({
     {
       path: "/products/:productId",
       name: "product",
-      component: () => import("../views/HomeView.vue"),
+      component: () => import ("../views/ProductView.vue"), // Update the path as needed
+
     },
+    // {
+    //   path: "/products/:productId",
+    //   name: "product",
+    //   component: () => import("../views/HomeView.vue"),
+    // },
     {
       path: "/cart",
       name: "Cart",
