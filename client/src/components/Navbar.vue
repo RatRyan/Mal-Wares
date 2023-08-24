@@ -21,12 +21,12 @@
           <RouterLink to="/account">
             <div class="nav-icon d-flex">
               <p>{{ userStore.firstName }}</p>
-              <i class="bi bi-person mx-2"></i>
+              <i class="bi bi-person ms-1 me-4"></i>
             </div>
           </RouterLink>
           <RouterLink to="/cart">
             <div class="nav-icon">
-              <i class="bi bi-cart3 mx-3"></i>
+              <p>Cart ( {{ userStore.cartCount }} )</p>
             </div>
           </RouterLink>
         </div>

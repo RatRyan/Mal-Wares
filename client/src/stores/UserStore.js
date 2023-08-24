@@ -14,6 +14,9 @@ export const useUserStore = defineStore('user', {
     cart: ref([]),
     isAdmin: false,
   }),
+  getters: {
+    cartCount: (state) => (state.cart.length)
+  },
   actions: {
     async registerAccount(firstName, lastName, email, password) {
       const res = await axios.post('http://localhost:3000/account/register', {
