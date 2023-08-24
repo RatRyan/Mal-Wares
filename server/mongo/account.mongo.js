@@ -25,7 +25,7 @@ const GetAccount = async (body, callback) => {
     })
 }
 
-const PostAccount = (body, callback) => {
+const PostAccount = async (body, callback) => {
     executeQuery(async (client) => {
         const database = client.db('Store');
         const Accounts = database.collection('Accounts');

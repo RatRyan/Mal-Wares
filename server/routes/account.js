@@ -19,7 +19,9 @@ const createAccount = async (req, res) => {
             password: bcrypt.hashSync(req.body.password, salt),
         };
 
-        mongo.Post(user, () => {res.status(200)});
+        mongo.Post(user, () => {
+            res.sendStatus(200);
+        });
     });
 };
 

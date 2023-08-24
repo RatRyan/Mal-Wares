@@ -15,7 +15,7 @@ export const useUserStore = defineStore('user', {
     isAdmin: false,
   }),
   getters: {
-    cartCount: (state) => (state.cart.length)
+    cartCount: (state) => state.cart.length,
   },
   actions: {
     async registerAccount(firstName, lastName, email, password) {
