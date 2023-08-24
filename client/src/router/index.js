@@ -16,6 +16,10 @@ export default createRouter({
       component: () => import("../views/LoginView.vue"),
     },
     {
+      path: "/account",
+      component: () => import("../views/AccountView.vue"),
+    },
+    {
       path: "/products/:productId",
       component: () => import("../views/HomeView.vue"),
     },

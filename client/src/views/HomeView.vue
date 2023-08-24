@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <Navbar></Navbar>
-    <Product product-name="test product"/>
-  </div>
+  <Navbar></Navbar>
+  <Product product-name="test product"/>
 </template>
 
 <script setup>

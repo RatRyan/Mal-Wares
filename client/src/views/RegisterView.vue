@@ -1,5 +1,5 @@
 <template>
-  <div class="w-100 d-flex flex-column justify-content-center align-items-center">
+  <div class="vh-100 d-flex flex-column justify-content-center align-items-center">
     <div class="register-form container bg-white">
       <form @submit.prevent="
         user.registerAccount(firstName, lastName, email, password)
