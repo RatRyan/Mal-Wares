@@ -26,7 +26,7 @@ async function sendEmail(recipient, subject, message) {
 
 function sendAccountMadeEmail(recipient) {
   Subject = "Welcome to Mal Wares!"
-  Message = "Thank you for creating an account with Mal Wares! We hope you enjoy our products."
+  Message = "Thank you for creating an account with Mal-Wares! We hope you enjoy our products."
   sendEmail(recipient, Subject, Message);
 }
 
