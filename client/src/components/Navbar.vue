@@ -1,10 +1,10 @@
 <template>
   <nav class="navbar sticky-top bg-dark">
     <div class="container-fluid mx-3 pb-2">
-      <RouterLink class="navbar-brand" to="/">Mal-Wares</RouterLink>
+      <RouterLink class="mal-wares-title" to="/">Mal-Wares</RouterLink>
       <form class="d-flex" role="search">
         <RouterLink tag="button" to="/login">
-          <h3>{{ user.firstName }}<i class="bi bi-person mx-3"></i></h3>
+          <h3 class="account-icon">{{ user.firstName }}<i class="bi bi-person mx-3"></i></h3>
         </RouterLink>
         <RouterLink tag="button" to="/login">
           <h3><i class="bi bi-cart3 mx-3"></i></h3>
@@ -25,25 +25,16 @@ const user = useUserStore();
 </script>
 
 <style scoped>
-.navbar-brand {
+.mal-wares-title {
   color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
 }
-
 h3 {
   margin: 0;
   color: white;
 }
-
-a {
+.account-icon {
   color: white;
-  text-decoration: none;
 }
-
-i {
-  transition-property: color;
-  transition-duration: .25s;
-}
-
-i:hover {
-  color: gray;
-}</style>
+</style>
