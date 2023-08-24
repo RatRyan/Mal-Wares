@@ -3,17 +3,31 @@
     <div class="container-fluid mx-3 pb-2">
       <RouterLink class="mal-wares-title" to="/">Mal-Wares</RouterLink>
       <form class="d-flex" role="search">
-        <div v-if="!user.loggedIn">
+        <div v-if="!userStore.loggedIn" class="d-flex">
+          <RouterLink to="/register">
+            <div class="nav-icon d-flex">
+              <i class="bi bi-person"></i>
+              <p class="ms-1 me-4">Register</p>
+            </div>
+          </RouterLink>
           <RouterLink to="/login">
-            <h3 class="nav-icon">Login</h3>
+            <div class="nav-icon d-flex">
+              <i class="bi bi-box-arrow-right"></i>
+              <p class="ms-1">Login</p>
+            </div>
           </RouterLink>
         </div>
         <div v-else class="d-flex align-items-center">
           <RouterLink to="/account">
-            <h3 class="nav-icon">{{ user.firstName }}<i class="bi bi-person mx-3"></i></h3>
+            <div class="nav-icon d-flex">
+              <p>{{ userStore.firstName }}</p>
+              <i class="bi bi-person mx-2"></i>
+            </div>
           </RouterLink>
           <RouterLink to="/cart">
-            <h3 class="nav-icon"><i class="bi bi-cart3 mx-3"></i></h3>
+            <div class="nav-icon">
+              <i class="bi bi-cart3 mx-3"></i>
+            </div>
           </RouterLink>
         </div>
       </form>
@@ -25,20 +39,23 @@
 import { RouterLink } from 'vue-router';
 import { useUserStore } from '../stores/UserStore';
 
-const user = useUserStore();
+const userStore = useUserStore();
 </script>
 
 <style scoped>
 a {
   text-decoration: none;
 }
-
+p {
+  margin: 0;
+}
 .mal-wares-title {
   color: white;
   font-size: 1.5rem;
 }
 
 .nav-icon {
+  font-size: 1.1rem;
   color: white;
   margin: 0;
   text-decoration: none;
