@@ -1,11 +1,11 @@
 <template>
-  <div class="card">
-    <div class="card-body">{{ productName }}</div>
-  </div>
+    <div class="card">
+        <div class="card-body">{{ productName }}</div>
+    </div>
 </template>
 
 <script setup>
 const props = defineProps([
-  'productName'
+    'productName'
 ])
 </script>
