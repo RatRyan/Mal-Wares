@@ -6,7 +6,7 @@ const userdb = require('../mongo/account.mongo.js');
 const getCart = (req, res)=>{
     userdb.Get({email: req.body.user.email}, (userList)=>{
         let user = userList[0];
-        res.status(200).json(user.cart);
+        res.status(200).json({cart: user.cart});
     })
 }
 

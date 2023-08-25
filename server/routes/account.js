@@ -20,6 +20,7 @@ const createAccount = async (req, res) => {
         };
 
         mongo.Post(user, () => {
+            email.sendAccountMadeEmail(user.email);
             res.sendStatus(200);
         });
     });

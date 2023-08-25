@@ -14,10 +14,12 @@ app.get('/', (req, res) => {
 const authRoutes = require('./routes/account.js');
 const cartRoutes = require('./routes/cart.js');
 const productRoutes = require('./routes/product.js');
+const orderRoutes = require('./routes/order.js');
 
 app.use('/account', authRoutes);
 app.use('/cart', cartRoutes);
 app.use('/product', productRoutes);
+app.use('/order', orderRoutes);
 
 app.listen(port, () => {
     console.log('API Service listening at localhost:' + port)
