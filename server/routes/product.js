@@ -17,7 +17,17 @@ const post = (req, res) => {
 const get = (req, res) => {
     try {
         const productId = parseInt(req.params.productId, 10);
+        console.log(productId)
         dal.Get(productId, (jsonData) => {
+            res.json(jsonData)
+        })
+    } catch(err) {
+        res.sendStatus(500)
+    }
+}
+const getAll = (req, res) => {
+    try {
+        dal.Get(req.body, (jsonData) => {
             res.json(jsonData)
         })
     } catch(err) {
@@ -47,6 +57,7 @@ const Delete = (req, res) => {
 
 router.post('/', post)
 router.get('/:productId', get)
+router.get('/', getAll)
 router.patch('/', patch)
 router.delete('/', Delete)
 
