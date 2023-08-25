@@ -1,5 +1,5 @@
 <template>
-  <div class="w-100 d-flex flex-column justify-content-center align-items-center">
+  <div class="vh-100 d-flex flex-column justify-content-center align-items-center">
     <div class="login-form container bg-white">
       <form @submit.prevent="
         user.login(email, password)
@@ -10,12 +10,12 @@
           <span class="input-group-text">
             <i class="bi bi-envelope" />
           </span>
-          <input class="form-control border-start-0" type="email" id="email" name="email" v-model="email"/>
+          <input class="form-control border-start-0" type="email" id="email" name="email" v-model="email" />
         </div>
         <label>Password:</label>
         <div class="input-group">
           <span class="input-group-text"><i class="bi bi-shield-lock"></i></span>
-          <input class="form-control border-start-0" type="password" id="password" name="password" v-model="password"/>
+          <input class="form-control border-start-0" type="password" id="password" name="password" v-model="password" />
         </div>
         <button class="btn btn-dark mt-5">Login</button>
         <hr />

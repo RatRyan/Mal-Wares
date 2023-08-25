@@ -5,27 +5,26 @@ export default createRouter({
   routes: [
     {
       path: "/",
-      name: "Home",
       component: () => import("../views/HomeView.vue"),
     },
     {
       path: "/register",
-      name: "Register",
       component: () => import("../views/RegisterView.vue"),
     },
     {
       path: "/login",
-      name: "Login",
       component: () => import("../views/LoginView.vue"),
     },
     {
+      path: "/account",
+      component: () => import("../views/AccountView.vue"),
+    },
+    {
       path: "/products/:productId",
-      name: "product",
       component: () => import("../views/HomeView.vue"),
     },
     {
       path: "/cart",
-      name: "Cart",
       component: () => import("../views/CartView.vue"),
     },
   ],

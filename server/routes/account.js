@@ -20,7 +20,7 @@ const createAccount = async (req, res) => {
         };
 
         mongo.Post(user, () => {
-            res.status(200).json({ firstName: user.firstName });
+            res.sendStatus(200);
         });
     });
 };
@@ -34,8 +34,10 @@ const login = async (req, res) => {
         let user = users[0];
         if (bcrypt.compareSync(req.body.password, user.password)) {
             res.status(200).json({
-                email: user.email,
                 firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                isAdmin: user.isAdmin
             });
         } else {
             res.status(400).json({ message: 'Invalid password.' });
