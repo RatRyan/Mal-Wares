@@ -11,12 +11,9 @@ export const useUserStore = defineStore('user', {
     firstName: '',
     lastName: '',
     email: '',
-    cart: ref([]),
+    cartLength: 0,
     isAdmin: false,
   }),
-  getters: {
-    cartCount: (state) => state.cart.length,
-  },
   actions: {
     async registerAccount(firstName, lastName, email, password) {
       const res = await axios.post('http://localhost:3000/account/register', {
@@ -43,6 +40,7 @@ export const useUserStore = defineStore('user', {
         this.lastName = res.data.lastName;
         this.email = res.data.email;
         this.isAdmin = res.data.isAdmin;
+        this.cartLength = res.data.cartLength;
         router.push('/');
       }
     },

@@ -4,14 +4,14 @@ const userdb = require('../mongo/account.mongo.js');
 // const productdb = require('../mongo/product.mongo.js');
 
 const getCart = (req, res)=>{
-    userdb.Get({email: req.body.user.email}, (userList)=>{
+    userdb.Get({email: req.body.email}, (userList)=>{
         let user = userList[0];
         res.status(200).json({cart: user.cart});
     })
 }
 
 const addItem = (req, res)=>{
-    userdb.Get({email: req.body.user.email},(userList)=>{
+    userdb.Get({email: req.body.email},(userList)=>{
         let user = userList[0];
         user.cart.push(req.body.productID);
         userdb.Patch([{email: user.email}, {cart: user.cart}], ()=>{
@@ -21,7 +21,7 @@ const addItem = (req, res)=>{
 }
 
 const removeItem = (req, res)=>{
-    userdb.Get({email: req.body.user.email}, (userList)=>{
+    userdb.Get({email: req.body.email}, (userList)=>{
         let user = userList[0];
         for(let i = 0; i < user.cart.length; i++){
             if(user.cart[i] === req.body.productID){
@@ -37,12 +37,12 @@ const removeItem = (req, res)=>{
 }
 
 const removeAll = (req, res)=>{
-    userdb.Patch([{email: req.body.user.email}, {cart: []}],()=>{
+    userdb.Patch([{email: req.body.email}, {cart: []}],()=>{
         res.status(200);
     })
 }
 
-router.get('/', express.json(), getCart);
+router.post('/get', express.json(), getCart);
 router.post('/', express.json(), addItem);
 router.delete('/', express.json(), removeItem);
 router.delete('/all', express.json(), removeAll);
