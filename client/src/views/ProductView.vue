@@ -21,7 +21,12 @@ const products = [
     price: '19.99',
     imageUrl: 'product1.jpg',
   },
-]
+];
+  const addToCart = (product) => {
+  store.dispatch('addToCart', product);
+};
+import { useStore } from 'vuex';
+const store = useStore();
 </script>
   
   

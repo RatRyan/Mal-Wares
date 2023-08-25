@@ -18,8 +18,14 @@ const props = defineProps({
   productPrice: Number,
 });
 
+const store = useStore();
+
 const addToCart = () => {
-  // Implement your cart logic here
+  const newItem = {
+    name: props.productName,
+    price: props.productPrice,
+  };
+  store.commit('addToCart', newItem);
 };
 </script>
 
