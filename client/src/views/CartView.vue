@@ -22,9 +22,9 @@ import Product from '../components/Product.vue';
 
 const user = useUserStore();
 
-const cartRes = await axios.get(
-    'http://localhost:3000/cart',
-    user
+const cartRes = await axios.post(
+    'http://localhost:3000/cart/get',
+    {email: user.email}
 )
 
 let cart = cartRes.data.cart;

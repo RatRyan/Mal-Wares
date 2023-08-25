@@ -16,6 +16,8 @@ const createAccount = async (req, res) => {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             isAdmin: false,
+            cart: [],
+            orders: [],
             password: bcrypt.hashSync(req.body.password, salt),
         };
 
