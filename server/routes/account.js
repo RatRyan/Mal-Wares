@@ -40,7 +40,8 @@ const login = async (req, res) => {
                 firstName: user.firstName,
                 lastName: user.lastName,
                 email: user.email,
-                isAdmin: user.isAdmin
+                isAdmin: user.isAdmin,
+                cartLength: user.cart.length
             });
         } else {
             res.status(400).json({ message: 'Invalid password.' });

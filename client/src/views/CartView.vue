@@ -32,8 +32,7 @@ let cartItems =ref([]);
 
 for(let i = 0; i < cart.length; i++){
     let productRes = await axios.get(
-        'http://localhost:3000/product',
-        {id: cart[i]}
+        'http://localhost:3000/product/'+cart[i]
     )
     cartItems.push(productRes.data);
 
