@@ -16,4 +16,5 @@ import Product from '../components/Product.vue';
 import { ref } from 'vue';
 
 const products = ref([]);
+
 </script>
