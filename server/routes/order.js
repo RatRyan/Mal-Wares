@@ -41,7 +41,7 @@ const createOrder = (req, res)=>{
 }
 
 const orderCart = async (req, res)=>{
-    userdb.Get({email: req.body.user.email}, (userList)=>{
+    userdb.Get({email: req.body.email}, (userList)=>{
         let user = userList[0];
         let cart = user.cart;
         let orders = user.orders;

@@ -16,6 +16,8 @@ const createAccount = async (req, res) => {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             isAdmin: false,
+            cart: [],
+            orders: [],
             password: bcrypt.hashSync(req.body.password, salt),
         };
 
@@ -38,7 +40,8 @@ const login = async (req, res) => {
                 firstName: user.firstName,
                 lastName: user.lastName,
                 email: user.email,
-                isAdmin: user.isAdmin
+                isAdmin: user.isAdmin,
+                cartLength: user.cart.length
             });
         } else {
             res.status(400).json({ message: 'Invalid password.' });
