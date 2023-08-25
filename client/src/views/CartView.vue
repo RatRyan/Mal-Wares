@@ -2,7 +2,7 @@
   <div>
     <Navbar></Navbar>
     <h1>Your Cart</h1>
-    <div v-if="cartItems.length === 0">Your cart is empty.</div>
+    <div v-if="user.cartLength === 0">Your cart is empty.</div>
     <div v-else>
       <div v-for="(item, index) in cartItems" :key="item.id" class="cart-item">
         <h3>{{ item.name }}</h3>
@@ -37,7 +37,7 @@ const fetchData = async () => {
     const productRes = await axios.get(
         'http://localhost:3000/product/'+cart[i]
     );
-    cartItems.push(productRes.data);
+    cartItems.value.push(productRes.data);
   }
 };
 
@@ -48,7 +48,7 @@ onMounted(() => {
 const removeItem = async (id, index) => {
   const res = await axios.delete(
     'http://localhost:3000/cart',
-    { user: user, id: id }
+    { email: user.email, productID: id }
   );
   cartItems.value.splice(index, 1);
 };
@@ -56,7 +56,7 @@ const removeItem = async (id, index) => {
 const checkout = () => {
   const res = axios.post(
     'http://localhost:3000/order/cart',
-    { user: user }
+    { email: user.email }
   );
   // go to checkout page or display thank you
 };
