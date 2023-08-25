@@ -1,14 +1,22 @@
 <template>
   <Navbar></Navbar>
-  <h2>User info:</h2>
-  <div class="user-info">
-    <p>First Name: {{ userStore.firstName }}</p>
-    <p>Last Name: {{ userStore.lastName }}</p>
-    <p>Email: {{ userStore.email }}</p>
-  </div>
-  <div class="d-flex flex-column">
-    <button v-if="userStore.isAdmin" class="btn btn-warning">Admin Panel</button>
-    <button @click="userStore.logout()" class="btn btn-dark">Logout</button>
+  <div class="d-flex vh-100">
+    <div class="d-flex flex-column w-100 align-items-center">
+      <h2 class="pt-5">Welcome, {{ userStore.firstName }}</h2>
+      <div class="card m-3 w-50">
+        <div class="card-header">User Details</div>
+        <div class="card-body">
+          <p><b>First Name</b><br />{{ userStore.firstName }}</p>
+          <p><b>Last Name</b><br />{{ userStore.lastName }}</p>
+          <p><b>Email</b><br />{{ userStore.email }}</p>
+        </div>
+      </div>
+      <div class="card m-3 w-50 flex-grow-1">
+        <div class="card-header">Orders</div>
+        <div class="card-body"></div>
+      </div>
+      <button @click="userStore.logout()" class="btn btn-danger mb-5">Logout</button>
+    </div>
   </div>
 </template>
 
@@ -16,17 +24,7 @@
 import Navbar from '../components/Navbar.vue';
 import { useUserStore } from '../stores/UserStore';
 
-const userStore = useUserStore()
+const userStore = useUserStore();
 </script>
 
-<style scoped>
-.btn {
-  max-width: 9rem;
-}
-p {
-  margin: 0;
-}
-.user-info {
-  margin-bottom: 1rem;
-}
-</style>
+<style scoped></style>
