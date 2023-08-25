@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const dal = require('../mongo/product.mongo.js')
+const bodyParser = require('body-parser')
 const fs = require('fs')
 
 const post = (req, res) => {
@@ -15,7 +16,8 @@ const post = (req, res) => {
 
 const get = (req, res) => {
     try {
-        dal.Get(req.body, (jsonData) => {
+        const productId = parseInt(req.params.productId, 10);
+        dal.Get(productId, (jsonData) => {
             res.json(jsonData)
         })
     } catch(err) {
@@ -44,7 +46,7 @@ const Delete = (req, res) => {
 }
 
 router.post('/', post)
-router.get('/', get)
+router.get('/:productId', get)
 router.patch('/', patch)
 router.delete('/', Delete)
 

@@ -15,15 +15,19 @@ const exicuteQuery = async (query) => {
 }
 
 
-const GetProduct = async (body, callback) => {
+const GetProduct = async (productId, callback) => {
     exicuteQuery(async (client) => {
         const database = client.db('Store');
         const Products = database.collection('Products');
-        const cursor = Products.find(body)
+
+        const cursor = Products.find({ID:productId})
         const docArray = await cursor.toArray()
         callback(docArray)
     })
 }
+
+
+
 
 
 const PostProduct = (body, callback) => {
