@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card w-100">
     <img v-bind:src="image" class="card-img-top" />
     <div class="card-body">
       <h5 class="card-title">{{ name }}</h5>
@@ -18,5 +18,4 @@ const props = defineProps({
 </script>
 
 <style scoped>
-/* Add your component-specific styles here */
 </style>

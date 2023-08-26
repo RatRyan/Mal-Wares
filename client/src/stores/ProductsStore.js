@@ -7,8 +7,10 @@ export const useProductsStore = defineStore('products', {
   }),
   actions: {
     async loadProducts() {
-      const res = await axios.get('http://localhost:3000/product');
-      this.products = res.data
+      if (this.products.length === 0) {
+        const res = await axios.get('http://localhost:3000/product');
+        this.products = res.data
+      }
     },
   },
 });
