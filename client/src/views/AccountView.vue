@@ -22,7 +22,7 @@
                 <th scope="col">Total</th>
               </tr>
             </thead>
-            <tbody v-for="order in orders">
+            <tbody v-for="order in userStore.orders">
               <Order
                 :order-number="order.orderNumber"
                 :order-date="order.orderDate"
@@ -43,68 +43,6 @@
 import Navbar from '../components/Navbar.vue';
 import Order from '../components/Order.vue';
 import { useUserStore } from '../stores/UserStore';
-
-const orders = [
-  {
-    orderNumber: 1,
-    orderDate: 'September 12, 2023',
-    orderTotal: 45.75,
-  },
-
-  {
-    orderNumber: 2,
-    orderDate: 'June 25, 2022',
-    orderTotal: 102.49,
-  },
-
-  {
-    orderNumber: 3,
-    orderDate: 'December 5, 2023',
-    orderTotal: 23.0,
-  },
-
-  {
-    orderNumber: 4,
-    orderDate: 'August 7, 2022',
-    orderTotal: 87.2,
-  },
-
-  {
-    orderNumber: 5,
-    orderDate: 'January 18, 2023',
-    orderTotal: 150.3,
-  },
-
-  {
-    orderNumber: 6,
-    orderDate: 'October 30, 2022',
-    orderTotal: 60.15,
-  },
-
-  {
-    orderNumber: 7,
-    orderDate: 'March 14, 2023',
-    orderTotal: 35.5,
-  },
-
-  {
-    orderNumber: 8,
-    orderDate: 'November 9, 2022',
-    orderTotal: 18.99,
-  },
-
-  {
-    orderNumber: 9,
-    orderDate: 'April 22, 2023',
-    orderTotal: 200.0,
-  },
-
-  {
-    orderNumber: 10,
-    orderDate: 'July 3, 2022',
-    orderTotal: 75.8,
-  },
-];
 
 const userStore = useUserStore();
 </script>

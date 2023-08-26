@@ -8,7 +8,8 @@ export const useUserStore = defineStore('user', {
     firstName: '',
     lastName: '',
     email: '',
-    cartLength: 0,
+    cart: [],
+    orders: [],
     isAdmin: false,
   }),
   actions: {
@@ -36,17 +37,20 @@ export const useUserStore = defineStore('user', {
         this.firstName = res.data.firstName;
         this.lastName = res.data.lastName;
         this.email = res.data.email;
+        this.cart = res.data.cart;
+        this.orders = res.data.orders;
         this.isAdmin = res.data.isAdmin;
-        this.cartLength = res.data.cartLength;
         router.push('/');
       }
     },
 
     logout() {
       this.loggedIn = false;
-      this.firstName = '';
-      this.lastName = '';
-      this.email = '';
+      this.firstName = ''
+      this.lastName = ''
+      this.email = ''
+      this.cart = []
+      this.orders = []
       this.isAdmin = false;
       router.push('/login');
     },

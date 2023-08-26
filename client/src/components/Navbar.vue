@@ -2,7 +2,7 @@
   <nav class="navbar sticky-top bg-dark">
     <div class="container-fluid mx-3 pb-2">
       <RouterLink class="mal-wares-title" to="/">Mal-Wares</RouterLink>
-      <form class="d-flex" role="search">
+      <form class="d-flex">
         <div v-if="!userStore.loggedIn" class="d-flex">
           <RouterLink to="/register">
             <div class="nav-icon d-flex">
@@ -26,7 +26,7 @@
           </RouterLink>
           <RouterLink to="/cart">
             <div class="nav-icon">
-              <p>Cart ( {{ userStore.cartLength }} )</p>
+              <p>Cart ( {{ userStore.cart.length }} )</p>
             </div>
           </RouterLink>
         </div>
