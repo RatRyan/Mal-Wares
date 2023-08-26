@@ -1,20 +1,19 @@
 <template>
   <div class="card">
+    <img v-bind:src="image" class="card-img-top" />
     <div class="card-body">
-      <h5 class="card-title">{{ productName }}</h5>
-      <p class="card-text">{{ productDescription }}</p>
-      <p class="card-text">${{ productPrice }}</p>
+      <h5 class="card-title">{{ name }}</h5>
+      <p class="card-text">${{ price }}</p>
     </div>
+    <button class="btn btn-primary">View Product</button>
   </div>
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
-
 const props = defineProps({
-  productName: String,
-  productDescription: String,
-  productPrice: Number,
+  image: String,
+  name: String,
+  price: Number,
 });
 </script>
 

@@ -19,7 +19,6 @@ import { ref, onMounted } from 'vue';
 import Navbar from '../components/Navbar.vue';
 import axios from 'axios';
 import { useUserStore } from '../stores/UserStore';
-import Product from '../components/Product.vue';
 
 const user = useUserStore();
 
