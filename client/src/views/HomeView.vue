@@ -2,15 +2,17 @@
   <Navbar></Navbar>
   <div class="d-flex flex-column align-items-center">
     <h1 class="my-5">Product List</h1>
-    <div class="container-fluid d-flex justify-content-center">
-      <div class="row mx-5 mt-3">
-        <div v-for="product in products" :key="product.id" class="col-sm-4 mb-4">
-          <Product
-            :image="product.Image"
-            :name="product.Name"
-            :price="product.Price"
-          >
-          </Product>
+    <div class="store-wrapper">
+      <div class="container-fluid d-flex justify-content-center">
+        <div class="row mx-5 mt-3">
+          <div v-for="product in products" :key="product.id" class="col-sm-4 mb-4">
+            <Product
+              :image="product.Image"
+              :name="product.Name"
+              :price="product.Price"
+            >
+            </Product>
+          </div>
         </div>
       </div>
     </div>
@@ -33,4 +35,8 @@ const products = computed(() => productsStore.products)
 </script>
 
 <style scoped>
+.store-wrapper {
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
 </style>
