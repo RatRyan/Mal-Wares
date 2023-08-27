@@ -29,6 +29,20 @@ const router = createRouter({
       },
     },
     {
+      path: '/admin',
+      component: () => import('../views/AdminView.vue'),
+      beforeEnter: (to, from, next) => {
+        const userStore = useUserStore();
+        if (!userStore.loggedIn) {
+          next({ path: '/login' });
+        } else if (!userStore.isAdmin) {
+          next({ path: '/account' });
+        } else {
+          next();
+        }
+      },
+    },
+    {
       path: '/products/:productId',
       component: () => import('../views/HomeView.vue'),
     },
