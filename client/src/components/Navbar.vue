@@ -26,7 +26,7 @@
           </RouterLink>
           <RouterLink to="/cart">
             <div class="nav-icon">
-              <p>Cart ( {{ userStore.cartSize }} )</p>
+              <p>Cart ( {{ userStore.cartLength }} )</p>
             </div>
           </RouterLink>
         </div>

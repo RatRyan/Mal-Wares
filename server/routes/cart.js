@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const userdb = require('../mongo/account.mongo.js');
-// const productdb = require('../mongo/product.mongo.js');
 
 const getCart = (req, res)=>{
     userdb.Get({email: req.body.email}, (userList)=>{

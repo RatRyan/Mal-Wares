@@ -5,7 +5,7 @@
     <div class="store-wrapper">
       <div class="container-fluid d-flex justify-content-center">
         <div class="row mx-5 mt-3">
-          <div v-for="(product, index) in products" :key="index" class="col-sm-4 mb-4">
+          <div v-for="(product, index) in productsStore.products" :key="index" class="col-sm-4 mb-4">
             <Product
               :id="index"
               :image="product.image"
@@ -21,13 +21,11 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
 import { useProductsStore } from '../stores/ProductsStore';
 import Navbar from '../components/Navbar.vue';
 import Product from '../components/Product.vue';
 
 const productsStore = useProductsStore();
-const products = computed(() => productsStore.products)
 </script>
 
 <style scoped>
