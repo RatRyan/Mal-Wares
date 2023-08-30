@@ -13,7 +13,7 @@ export const useUserStore = defineStore('user', {
     isAdmin: false,
   }),
   getters: {
-    cartSize: (state) => state.cart.length
+    cartLength: (state) => state.cart.length,
   },
   actions: {
     async registerAccount(firstName, lastName, email, password) {
@@ -47,13 +47,33 @@ export const useUserStore = defineStore('user', {
       }
     },
 
+    async addToCart(productID) {
+      console.log('test')
+      await axios.post('http://localhost:3000/cart', {
+        email: this.email,
+        productID,
+      });
+      const res = await axios.post('http://localhost:3000/cart/get', {
+        email: this.email,
+      });
+      console.log("done")
+    },
+
+    async removeItem(id, index) {
+      const res = await axios.delete(
+        'http://localhost:3000/cart',
+        { email: userStore.email, productID: id }
+      );
+      cartItems.value.splice(index, 1);
+    },
+
     logout() {
       this.loggedIn = false;
-      this.firstName = ''
-      this.lastName = ''
-      this.email = ''
-      this.cart = []
-      this.orders = []
+      this.firstName = '';
+      this.lastName = '';
+      this.email = '';
+      this.cart = [];
+      this.orders = [];
       this.isAdmin = false;
       router.push('/login');
     },

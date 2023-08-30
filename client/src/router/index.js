@@ -50,6 +50,14 @@ const router = createRouter({
     {
       path: '/cart',
       component: () => import('../views/CartView.vue'),
+      beforeEnter: (to, from, next) => {
+        const userStore = useUserStore();
+        if (!userStore.loggedIn) {
+          next({ path: '/login' });
+        } else {
+          next();
+        }
+      },
     },
   ],
 });

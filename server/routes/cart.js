@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const userdb = require('../mongo/account.mongo.js');
-// const productdb = require('../mongo/product.mongo.js');
 
 const getCart = (req, res)=>{
     userdb.Get({email: req.body.email}, (userList)=>{
@@ -42,9 +41,7 @@ const removeAll = (req, res)=>{
     })
 }
 
-router.post('/get', express.json(), getCart);
-router.post('/', express.json(), addItem);
-router.patch('/', express.json(), removeItem);
-router.patch('/all', express.json(), removeAll);
+router.get('/get', getCart);
+router.post('/', addItem);
 
 module.exports = router;
