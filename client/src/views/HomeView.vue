@@ -8,9 +8,9 @@
           <div v-for="(product, index) in products" :key="index" class="col-sm-4 mb-4">
             <Product
               :id="index"
-              :image="product.Image"
-              :name="product.Name"
-              :price="product.Price"
+              :image="product.image"
+              :name="product.name"
+              :price="product.price"
             >
             </Product>
           </div>
