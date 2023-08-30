@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-6">
-        <img :src="currentProduct.image" alt="product image" class="img-fluid" v-if="currentProduct">
+        <img :src="product.image" alt="product image" class="img-fluid" v-if="currentProduct">
       </div>
       <div class="col-sm-6">
         <h1>{{ product.name }}</h1>
@@ -16,8 +16,8 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
 import Navbar from '../components/Navbar.vue';
+import { useUserStore } from '../stores/UserStore';
 import { useProductsStore } from '../stores/ProductsStore';
 import axios from 'axios';
 
@@ -26,15 +26,14 @@ const productId = parseInt(uri[4])
 console.log(productId)
 
 const productsStore = useProductsStore()
-const product = computed(() => productsStore.products[productId])
+const userStore = useUserStore();
+const product = productsStore.products[productId]
+console.log(product)
 
 const addToCart = async () => {
-  const res = await axios.post(
-    'http://localhost:3000/cart',
-    { email: user.email, productID: product.id }
-  );
-  if (res.status === 200) {
-    user.cartLength++;
-  }
+  await axios.post('http://localhost:3000/cart', { 
+    email: userStore.email,
+    productID: product.id 
+  });
 };
 </script>
