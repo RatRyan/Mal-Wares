@@ -1,7 +1,8 @@
 <template>
   <Navbar></Navbar>
+
   <div class="container">
-        <Product :productName="product.name" :productDescription="product.description" :productPrice="product.price" />
+        <h1></h1>
         <button class="btn btn-primary" @click="addToCart">Add to Cart</button>
   </div>
 </template>
@@ -9,18 +10,22 @@
 <script setup>
 import Navbar from '../components/Navbar.vue';
 import Product from '../components/Product.vue';
+import { useProductsStore } from '../stores/ProductsStore';
 import axios from 'axios';
-import { useUserStore } from '../stores/UserStore';
+import { onMounted } from 'vue';
 
-const user = useUserStore();
+const productsStore = useProductsStore();
+let currentProduct;
 
-const product = {
-    id: 1,
-    name: 'Product 1',
-    description: 'Description of Product 1',
-    price: '19.99',
-    imageUrl: 'product1.jpg',
-  };
+onMounted(async () => {
+  let products = productsStore.products
+  // get last part of url
+  let url = window.location.href;
+  let id = url.substring(url.lastIndexOf('/') + 1);
+  currentProduct = products[parseInt(id)]
+});
+
+
 const addToCart = async () => {
   const res = await axios.post(
     'http://localhost:3000/cart',
