@@ -8,7 +8,7 @@ const getUserOrders = (req, res)=>{
     userdb.Get({email: req.body.user.email}, (userList)=>{
         let user = userList[0];
         res.status(200).json(user.orders);
-    })
+    });
 }
 
 const createOrder = (req, res)=>{
@@ -69,7 +69,7 @@ const orderCart = async (req, res)=>{
     })
 }
 
-router.get('/', getUserOrders);
+router.post('/get', getUserOrders);
 router.post('/', createOrder);
 router.post('/cart', orderCart);
 
