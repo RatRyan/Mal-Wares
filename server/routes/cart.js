@@ -44,7 +44,7 @@ const removeAll = (req, res)=>{
 
 router.post('/get', express.json(), getCart);
 router.post('/', express.json(), addItem);
-router.delete('/', express.json(), removeItem);
-router.delete('/all', express.json(), removeAll);
+router.patch('/', express.json(), removeItem);
+router.patch('/all', express.json(), removeAll);
 
 module.exports = router;
