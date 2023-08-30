@@ -32,9 +32,14 @@
           </table>
         </div>
       </div>
-      <button @click="userStore.logout()" class="btn btn-danger mb-5">
-        Logout
-      </button>
+      <div>
+        <button @click="userStore.logout()" class="btn btn-danger mb-5">
+          Logout
+        </button>
+        <button v-if="userStore.isAdmin" @click="userStore.logout()" class="btn btn-warning mb-5 ms-3">
+          Admin Panel
+        </button>
+      </div>
     </div>
   </div>
 </template>
