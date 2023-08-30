@@ -1,40 +1,40 @@
 <template>
   <Navbar></Navbar>
-
   <div class="container">
-        <h1></h1>
-        <button class="btn btn-primary" @click="addToCart">Add to Cart</button>
+    <div class="row">
+      <div class="col-sm-6">
+        <img :src="currentProduct.image" alt="product image" class="img-fluid" v-if="currentProduct">
+      </div>
+      <div class="col-sm-6">
+        <h1>{{ product.name }}</h1>
+        <p>{{ product.description }}</p>
+        <p>Price: ${{ product.price }}</p>
+      </div>
+      <button class="btn btn-primary" @click="addToCart">Add to Cart</button>
+    </div>
   </div>
 </template>
-  
+
 <script setup>
+import { computed } from 'vue';
 import Navbar from '../components/Navbar.vue';
-import Product from '../components/Product.vue';
 import { useProductsStore } from '../stores/ProductsStore';
 import axios from 'axios';
-import { onMounted } from 'vue';
 
-const productsStore = useProductsStore();
-let currentProduct;
+const uri = window.location.href.split('/');
+const productId = parseInt(uri[4])
+console.log(productId)
 
-onMounted(async () => {
-  let products = productsStore.products
-  // get last part of url
-  let url = window.location.href;
-  let id = url.substring(url.lastIndexOf('/') + 1);
-  currentProduct = products[parseInt(id)]
-});
-
+const productsStore = useProductsStore()
+const product = computed(() => productsStore.products[productId])
 
 const addToCart = async () => {
   const res = await axios.post(
     'http://localhost:3000/cart',
-    {email: user.email, productID: product.id}
+    { email: user.email, productID: product.id }
   );
-  if(res.status === 200){
+  if (res.status === 200) {
     user.cartLength++;
   }
 };
 </script>
-  
-  

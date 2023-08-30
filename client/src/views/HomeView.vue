@@ -21,17 +21,12 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue';
+import { computed } from 'vue';
 import { useProductsStore } from '../stores/ProductsStore';
 import Navbar from '../components/Navbar.vue';
 import Product from '../components/Product.vue';
 
 const productsStore = useProductsStore();
-
-onMounted(async () => {
-  await productsStore.loadProducts();
-});
-
 const products = computed(() => productsStore.products)
 </script>
 
