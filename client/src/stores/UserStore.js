@@ -48,22 +48,24 @@ export const useUserStore = defineStore('user', {
     },
 
     async addToCart(productID) {
-      console.log('test')
+      this.cart.push(productID);
+
       await axios.post('http://localhost:3000/cart', {
         email: this.email,
-        productID,
+        cart: this.cart,
       });
-      const res = await axios.post('http://localhost:3000/cart/get', {
+
+      const res = await axios.get('http://localhost:3000/cart', {
         email: this.email,
       });
-      console.log("done")
+      console.log(res.data);
     },
 
-    async removeItem(id, index) {
-      const res = await axios.delete(
-        'http://localhost:3000/cart',
-        { email: userStore.email, productID: id }
-      );
+    async removeItem(index) {
+      const res = await axios.delete('http://localhost:3000/cart', {
+        email: userStore.email,
+        productID: id,
+      });
       cartItems.value.splice(index, 1);
     },
 
