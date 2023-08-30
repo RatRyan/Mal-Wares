@@ -7,7 +7,7 @@
 </template>
   
 <script setup>
-import Navbar from './Navbar.vue';
+import Navbar from '../components/Navbar.vue';
 import Product from '../components/Product.vue';
 import axios from 'axios';
 import { useUserStore } from '../stores/UserStore';

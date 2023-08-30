@@ -5,8 +5,9 @@
     <div class="store-wrapper">
       <div class="container-fluid d-flex justify-content-center">
         <div class="row mx-5 mt-3">
-          <div v-for="product in products" :key="product.id" class="col-sm-4 mb-4">
+          <div v-for="(product, index) in products" :key="index" class="col-sm-4 mb-4">
             <Product
+              :id="index"
               :image="product.Image"
               :name="product.Name"
               :price="product.Price"
