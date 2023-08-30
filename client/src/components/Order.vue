@@ -1,15 +1,15 @@
 <template>
   <tr>
-    <td>#{{ orderNumber }}</td>
-    <td>{{ orderDate }}</td>
-    <td>${{ orderTotal }}</td>
+    <td>#{{ number }}</td>
+    <td>{{ date }}</td>
+    <td>${{ total }}</td>
   </tr>
 </template>
 
 <script setup>
 const props = defineProps({
-  orderNumber: Number,
-  orderDate: String,
-  orderTotal: Number,
+  number: Number,
+  date: String,
+  total: Number,
 });
 </script>

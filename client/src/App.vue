@@ -5,5 +5,13 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue';
 import { RouterView } from 'vue-router';
+import { useProductsStore } from './stores/ProductsStore';
+
+const productsStore = useProductsStore();
+
+onMounted(async () => {
+  await productsStore.loadProducts();
+});
 </script>

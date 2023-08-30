@@ -24,9 +24,9 @@
             </thead>
             <tbody v-for="order in userStore.orders">
               <Order
-                :order-number="order.orderNumber"
-                :order-date="order.orderDate"
-                :order-total="order.orderTotal"
+                :number="order.number"
+                :date="order.date"
+                :total="order.cost"
               ></Order>
             </tbody>
           </table>
@@ -36,15 +36,18 @@
         <button @click="userStore.logout()" class="btn btn-danger mb-5">
           Logout
         </button>
-        <button v-if="userStore.isAdmin" @click="userStore.logout()" class="btn btn-warning mb-5 ms-3">
-          Admin Panel
-        </button>
+        <RouterLink v-if="userStore.isAdmin" to="/admin">
+          <button @click="userStore.logout()" class="btn btn-warning mb-5 ms-3">
+            Admin Panel
+          </button>
+        </RouterLink>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { RouterLink } from 'vue-router';
 import Navbar from '../components/Navbar.vue';
 import Order from '../components/Order.vue';
 import { useUserStore } from '../stores/UserStore';
