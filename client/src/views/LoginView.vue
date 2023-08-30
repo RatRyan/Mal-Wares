@@ -1,4 +1,5 @@
 <template>
+  <Navbar></Navbar>
   <div class="vh-100 d-flex flex-column justify-content-center align-items-center">
     <div class="login-form container bg-white">
       <form @submit.prevent="
@@ -29,6 +30,7 @@
 import { RouterLink } from 'vue-router';
 import { useUserStore } from '../stores/UserStore';
 import { ref } from 'vue';
+import Navbar from '../components/Navbar.vue';
 
 let email = ref('');
 let password = ref('');
