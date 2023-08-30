@@ -21,24 +21,20 @@ import Navbar from '../components/Navbar.vue';
 import { useProductsStore } from '../stores/ProductsStore';
 import axios from 'axios';
 
+const uri = window.location.href.split('/');
+const productId = parseInt(uri[4])
+console.log(productId)
+
 const productsStore = useProductsStore()
-const products = computed(() => productsStore.products)
-console.log(products); // Check if the `products` array is populated
-const product = {
-  name: "",
-  description: "",
-  price: 0,
-}
+const product = computed(() => productsStore.products[productId])
 
 const addToCart = async () => {
-  if (currentProduct) {
-    const res = await axios.post(
-      'http://localhost:3000/cart',
-      { email: user.email, productID: currentProduct.id }
-    );
-    if (res.status === 200) {
-      user.cartLength++;
-    }
+  const res = await axios.post(
+    'http://localhost:3000/cart',
+    { email: user.email, productID: product.id }
+  );
+  if (res.status === 200) {
+    user.cartLength++;
   }
 };
 </script>
