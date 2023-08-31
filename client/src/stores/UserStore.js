@@ -11,6 +11,7 @@ export const useUserStore = defineStore('user', {
     cart: [],
     orders: [],
     isAdmin: false,
+    loginFailed: false,
   }),
   getters: {
     cartLength: (state) => state.cart.length,
@@ -30,20 +31,24 @@ export const useUserStore = defineStore('user', {
     },
 
     async login(email, password) {
-      const res = await axios.post('http://localhost:3000/account/login', {
-        email,
-        password,
-      });
+      try {
+        const res = await axios.post('http://localhost:3000/account/login', {
+          email,
+          password,
+        });
 
-      if (res.status === 200) {
-        this.loggedIn = true;
-        this.firstName = res.data.firstName;
-        this.lastName = res.data.lastName;
-        this.email = res.data.email;
-        this.cart = res.data.cart;
-        this.orders = res.data.orders;
-        this.isAdmin = res.data.isAdmin;
-        router.push('/');
+        if (res.status === 200) {
+          this.loggedIn = true;
+          this.firstName = res.data.firstName;
+          this.lastName = res.data.lastName;
+          this.email = res.data.email;
+          this.cart = res.data.cart;
+          this.orders = res.data.orders;
+          this.isAdmin = res.data.isAdmin;
+          router.push('/');
+        }
+      } catch (e){
+        this.loginFailed = true;
       }
     },
 
@@ -55,18 +60,18 @@ export const useUserStore = defineStore('user', {
         cart: this.cart,
       });
 
-      const res = await axios.get('http://localhost:3000/cart', {
+      const res = await axios.post('http://localhost:3000/cart', {
         email: this.email,
       });
       console.log(res.data);
     },
 
     async removeItem(index) {
-      const res = await axios.delete('http://localhost:3000/cart', {
-        email: userStore.email,
-        productID: id,
+      this.cart.splice(index, 1);
+      await axios.post('http://localhost:3000/cart', {
+        email: this.email,
+        cart: this.cart,
       });
-      cartItems.value.splice(index, 1);
     },
 
     logout() {
