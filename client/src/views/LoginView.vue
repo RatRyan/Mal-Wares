@@ -18,7 +18,8 @@
           <span class="input-group-text"><i class="bi bi-shield-lock"></i></span>
           <input class="form-control border-start-0" type="password" id="password" name="password" v-model="password" />
         </div>
-        <button class="btn btn-dark mt-5">Login</button>
+        <p class="login-error mt-2" :class="{invisable: !user.loginFailed}">Invalid credentials</p>
+        <button class="btn btn-dark mt-2">Login</button>
         <hr />
         <RouterLink to="/register">Create an account</RouterLink>
       </form>
@@ -29,13 +30,17 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import { useUserStore } from '../stores/UserStore';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import Navbar from '../components/Navbar.vue';
 
 let email = ref('');
 let password = ref('');
 
 const user = useUserStore();
+
+onMounted(()=>{
+  user.loginFailed = false;
+})
 </script>
 
 <style scoped>
@@ -43,5 +48,11 @@ const user = useUserStore();
   max-width: 450px;
   padding: 40px;
   box-shadow: 0px 0px 20px 2px rgb(118, 118, 118);
+}
+.login-error {
+  color: red;
+}
+.invisable{
+  visibility: hidden;
 }
 </style>

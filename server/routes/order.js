@@ -48,15 +48,19 @@ const orderCart = async (req, res)=>{
 
         let totalPrice = 0;
 
+        
+
         cart.forEach(async item => {
-            await productdb.Get({id: item},(itemlist)=>{
-                totalPrice += itemlist[0].price;
-            });
+            // await productdb.Get({id: item},(itemlist)=>{
+            //     totalPrice += itemlist[0].price;
+            // });
+            totalPrice += item.price;
         });
 
         let newOrder = {
             date: new Date().toLocaleString(),
-            items: cart,
+            id: crypto.randomUUID(),
+            // items: cart,
             cost: totalPrice
         };
         

@@ -25,7 +25,7 @@ const getAll = (req, res) => {
 
 const patch = (req, res) => {
     try {
-        dal.Patch([{email: req.body.email}, {isAdmin: req.body.isAdmin}], () => {
+        dal.Patch([{email: req.body.email}, req.body], () => {
             res.sendStatus(200);
         })
     } catch(err) {

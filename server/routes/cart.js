@@ -17,7 +17,7 @@ const saveCart = (req, res) => {
     })
 }
 
-router.get('/', loadCart);
+router.post('/get', loadCart);
 router.post('/', saveCart);
 
 module.exports = router;
