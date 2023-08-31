@@ -14,6 +14,7 @@ export const useUserStore = defineStore('user', {
   }),
   getters: {
     cartLength: (state) => state.cart.length,
+    totalCartPrice: (state) => state.cart.reduce((total, item) => total + item.price, 0),
   },
   actions: {
     async registerAccount(firstName, lastName, email, password) {
@@ -47,8 +48,19 @@ export const useUserStore = defineStore('user', {
       }
     },
 
-    async addToCart(productID) {
-      this.cart.push(productID);
+    logout() {
+      this.loggedIn = false;
+      this.firstName = '';
+      this.lastName = '';
+      this.email = '';
+      this.cart = [];
+      this.orders = [];
+      this.isAdmin = false;
+      router.push('/login');
+    },
+
+    async addToCart(product) {
+      this.cart.push(product);
 
       await axios.post('http://localhost:3000/cart', {
         email: this.email,
@@ -62,22 +74,20 @@ export const useUserStore = defineStore('user', {
     },
 
     async removeItem(index) {
-      const res = await axios.delete('http://localhost:3000/cart', {
-        email: userStore.email,
-        productID: id,
-      });
-      cartItems.value.splice(index, 1);
+      // TODO
     },
 
-    logout() {
-      this.loggedIn = false;
-      this.firstName = '';
-      this.lastName = '';
-      this.email = '';
-      this.cart = [];
-      this.orders = [];
-      this.isAdmin = false;
-      router.push('/login');
-    },
+    async checkout() {
+      this.cart = []
+
+      await axios.post('http://localhost:3000/cart', {
+        email: this.email,
+        cart: this.cart,
+      });
+
+      const res = await axios.get('http://localhost:3000/cart', {
+        email: this.email,
+      });
+    }
   },
 });

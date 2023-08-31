@@ -1,5 +1,5 @@
 <template>
-  <div class="card w-100">
+  <div class="card w-100 text-center">
     <img v-bind:src="image" class="card-img-top" />
     <div class="card-body">
       <h5 class="card-title">{{ name }}</h5>

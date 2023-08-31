@@ -13,8 +13,8 @@
         <p>Price: ${{ item.price }}</p>
         <button @click="removeItem(item.id, index)">remove from cart</button>
       </div>
-      <p>Total price: ${{ totalPrice }}</p>
-      <button @click="checkout">Checkout</button>
+      <p>Total price: ${{ userStore.totalCartPrice }}</p>
+      <button @click="userStore.checkout">Checkout</button>
     </div>
   </div>
 </template>
@@ -22,8 +22,6 @@
 <script setup>
 import Navbar from '../components/Navbar.vue';
 import { useUserStore } from '../stores/UserStore';
-import { useProductsStore } from '../stores/ProductsStore';
-import router from '../router';
 
 const userStore = useUserStore();
 </script>
