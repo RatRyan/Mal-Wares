@@ -26,8 +26,8 @@
               <tbody>
                 <Order
                   v-for="order in userStore.orders"
-                  :key="order.number"
-                  :number="order.number"
+                  :key="order.id"
+                  :number="order.id"
                   :date="order.date"
                   :total="order.cost"
                 ></Order>
