@@ -36,7 +36,7 @@
           </div>
         </div>
         <div class="mb-5">
-          <button @click="userStore.logout()" class="btn btn-danger">Logout</button>
+          <button @click="userStore.logout()" class="btn btn-danger ms-3">Logout</button>
           <RouterLink v-if="userStore.isAdmin" to="/admin">
             <button class="btn btn-warning ms-3">Admin Panel</button>
           </RouterLink>

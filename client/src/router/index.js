@@ -19,29 +19,10 @@ const router = createRouter({
     {
       path: '/account',
       component: () => import('../views/AccountView.vue'),
-      beforeEnter: (to, from, next) => {
-        const userStore = useUserStore();
-        if (!userStore.loggedIn) {
-          next({ path: '/login' });
-        } else {
-          next();
-        }
-      },
     },
     {
       path: '/admin',
       component: () => import('../views/AdminView.vue'),
-      beforeEnter: (to, from, next) => {
-        const userStore = useUserStore();
-        console.log(userStore.firstName)
-        if (!userStore.loggedIn) {
-          next({ path: '/login' });
-        } else if (userStore.isAdmin) {
-          next({ path: '/admin' });
-        } else {
-          next();
-        }
-      },
     },
     {
       path: '/products/:id',
@@ -50,14 +31,6 @@ const router = createRouter({
     {
       path: '/cart',
       component: () => import('../views/CartView.vue'),
-      beforeEnter: (to, from, next) => {
-        const userStore = useUserStore();
-        if (!userStore.loggedIn) {
-          next({ path: '/login' });
-        } else {
-          next();
-        }
-      },
     },
   ],
 });
