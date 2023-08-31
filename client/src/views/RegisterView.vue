@@ -37,7 +37,8 @@
           </span>
           <input class="form-control border-start-0" type="password" id="password" v-model="password" />
         </div>
-        <button class="btn btn-dark mt-5" type="submit">
+        <p class="error mt-2">{{ user.errorText }}</p>
+        <button class="btn btn-dark mt-2" type="submit">
           Register
         </button>
       </form>
@@ -50,7 +51,7 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import { useUserStore } from '../stores/UserStore';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import Navbar from '../components/Navbar.vue';
 
 let firstName = ref('');
@@ -59,6 +60,10 @@ let email = ref('');
 let password = ref('');
 
 const user = useUserStore();
+
+onMounted(()=>{
+  user.errorText = "";
+})
 </script>
 
 <style scoped>
@@ -74,5 +79,10 @@ const user = useUserStore();
 
 a {
   text-decoration: none;
+}
+
+.error {
+  color: red;
+  min-height: 1.5em;
 }
 </style>
