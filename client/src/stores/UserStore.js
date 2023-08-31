@@ -14,6 +14,7 @@ export const useUserStore = defineStore('user', {
 
     errorText: "",
   }),
+  persist: true,
   getters: {
     cartLength: (state) => state.cart.length,
     totalCartPrice: (state) => state.cart.reduce((total, item) => total + item.price, 0).toFixed(2),
@@ -114,7 +115,7 @@ export const useUserStore = defineStore('user', {
       const res = await axios.post('http://localhost:3000/order/get',{
         email: this.email,
       });
-      
+
       this.orders = res.data.orders;
 
       // const res = await axios.get('http://localhost:3000/cart', {
