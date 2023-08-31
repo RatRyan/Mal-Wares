@@ -11,7 +11,8 @@ export const useUserStore = defineStore('user', {
     cart: [],
     orders: [],
     isAdmin: false,
-    loginFailed: false,
+
+    errorText: "",
   }),
   getters: {
     cartLength: (state) => state.cart.length,
@@ -19,15 +20,31 @@ export const useUserStore = defineStore('user', {
   },
   actions: {
     async registerAccount(firstName, lastName, email, password) {
-      const res = await axios.post('http://localhost:3000/account/register', {
-        firstName,
-        lastName,
-        email,
-        password,
-      });
+      const emailRegex = /.*?@.*?\..*?/;
+      const passwordRegex = /(?=.*[a-z].*)(?=.*[A-Z].*)(?=.*\d.*)(?=.*[-#$\.\\%&*!@\/\^\(\)\+\=\{\}\[\|\<\>\?\'\"\:\;\`\~\,].*).{8}.*/;
 
-      if (res.status === 200) {
-        await this.login(email, password);
+      if (
+        email.match(emailRegex) && 
+        password.match(passwordRegex) &&
+        firstName.match(/.+/) &&
+        lastName.match(/.+/)
+      ) {
+        try{
+          const res = await axios.post('http://localhost:3000/account/register', {
+            firstName,
+            lastName,
+            email,
+            password,
+          });
+
+          if (res.status === 200) {
+            await this.login(email, password);
+          }
+        } catch {
+          this.errorText = "Email must be unique"
+        }
+      } else {
+        this.errorText = "Validation failed";
       }
     },
 
@@ -49,7 +66,7 @@ export const useUserStore = defineStore('user', {
           router.push('/');
         }
       } catch (e){
-        this.loginFailed = true;
+        this.errorText = "Invalid credentials";
       }
     },
 
