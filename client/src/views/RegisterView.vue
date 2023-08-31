@@ -2,12 +2,12 @@
   <div class="dark-mode">
     <Navbar></Navbar>
     <div class="vh-100 d-flex flex-column justify-content-center align-items-center">
-      <div class="register-form container bg-white">
+      <div class="register-form container bg-dark">
         <form @submit.prevent="registerUser" class="d-flex flex-column">
-          <h2 class="mb-4">Register</h2>
+          <h2 class="mb-4 text-light">Register</h2>
           <div class="d-flex">
             <div class="name-field">
-              <label class="form-label">First Name:</label>
+              <label class="form-label text-light">First Name:</label>
               <div class="input-group">
                 <span class="input-group-text">
                   <i class="bi bi-person"></i>
@@ -16,25 +16,25 @@
               </div>
             </div>
             <div class="name-field ml-1">
-              <label class="form-label">Last Name:</label>
+              <label class="form-label text-light">Last Name:</label>
               <input class="form-control" type="text" id="lastName" name="lastName" v-model="lastName" />
             </div>
           </div>
-          <label class="form-label">Email:</label>
+          <label class="form-label text-light">Email:</label>
           <div class="input-group">
             <span class="input-group-text">
               <i class="bi bi-envelope"></i>
             </span>
             <input class="form-control" type="text" id="email" v-model="email" />
           </div>
-          <label class="form-label">Password:</label>
+          <label class="form-label text-light">Password:</label>
           <div class="input-group">
             <span class="input-group-text">
               <i class="bi bi-shield-lock"></i>
             </span>
             <input class="form-control" type="password" id="password" v-model="password" />
           </div>
-          <p class="error mt-2">{{ user.errorText }}</p>
+          <p class="error mt-2 text-light">{{ user.errorText }}</p>
           <button class="btn btn-primary mt-3" type="submit">Register</button>
         </form>
         <hr class="mt-4 mb-3" />
@@ -81,7 +81,6 @@ const registerUser = () => {
   padding: 40px;
   box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  color: #000000; /* Set the text color to a darker color */
 }
 
 .form-label {
