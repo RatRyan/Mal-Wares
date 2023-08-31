@@ -15,7 +15,7 @@ export const useUserStore = defineStore('user', {
   }),
   getters: {
     cartLength: (state) => state.cart.length,
-    totalCartPrice: (state) => state.cart.reduce((total, item) => total + item.price, 0),
+    totalCartPrice: (state) => state.cart.reduce((total, item) => total + item.price, 0).toFixed(2),
   },
   actions: {
     async registerAccount(firstName, lastName, email, password) {

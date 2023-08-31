@@ -33,11 +33,11 @@ const router = createRouter({
       component: () => import('../views/AdminView.vue'),
       beforeEnter: (to, from, next) => {
         const userStore = useUserStore();
-        console.log(userStore.isAdmin)
+        console.log(userStore.firstName)
         if (!userStore.loggedIn) {
           next({ path: '/login' });
-        } else if (!userStore.isAdmin) {
-          next({ path: '/account' });
+        } else if (userStore.isAdmin) {
+          next({ path: '/admin' });
         } else {
           next();
         }
