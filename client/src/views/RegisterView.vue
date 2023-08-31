@@ -25,7 +25,7 @@
             <span class="input-group-text">
               <i class="bi bi-envelope"></i>
             </span>
-            <input class="form-control" type="email" id="email" v-model="email" />
+            <input class="form-control" type="text" id="email" v-model="email" />
           </div>
           <label class="form-label">Password:</label>
           <div class="input-group">

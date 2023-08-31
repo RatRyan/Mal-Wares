@@ -40,7 +40,7 @@ export const useUserStore = defineStore('user', {
           if (res.status === 200) {
             await this.login(email, password);
           }
-        } catch {
+        } catch (e) {
           this.errorText = "Email must be unique"
         }
       } else {
@@ -88,11 +88,6 @@ export const useUserStore = defineStore('user', {
         email: this.email,
         cart: this.cart,
       });
-
-      const res = await axios.post('http://localhost:3000/cart', {
-        email: this.email,
-      });
-      console.log(res.data);
     },
 
     async removeItem(index) {
@@ -104,6 +99,11 @@ export const useUserStore = defineStore('user', {
     },
 
     async checkout() {
+      await axios.post('http://localhost:3000/order', {
+        email: this.email,
+        products: this.cart,
+      });
+
       this.cart = []
 
       await axios.post('http://localhost:3000/cart', {
@@ -111,9 +111,15 @@ export const useUserStore = defineStore('user', {
         cart: this.cart,
       });
 
-      const res = await axios.get('http://localhost:3000/cart', {
+      const res = await axios.post('http://localhost:3000/order/get',{
         email: this.email,
       });
+      
+      this.orders = res.data.orders;
+
+      // const res = await axios.get('http://localhost:3000/cart', {
+      //   email: this.email,
+      // });
     }
   },
 });

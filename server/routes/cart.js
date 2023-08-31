@@ -12,7 +12,7 @@ const saveCart = (req, res) => {
     userdb.Get({email: req.body.email}, (userList) => {
         const user = userList[0]
         userdb.Patch([{email: user.email}, {cart: req.body.cart}], () => {
-            res.status(200);
+            res.sendStatus(200);
         })
     })
 }
