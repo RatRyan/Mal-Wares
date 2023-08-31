@@ -11,7 +11,7 @@
       >
         <h3>{{ item.name }}</h3>
         <p>Price: ${{ item.price }}</p>
-        <button @click="removeItem(item.id, index)">remove from cart</button>
+        <button @click="userStore.removeItem(index)">remove from cart</button>
       </div>
       <p>Total price: ${{ userStore.totalCartPrice }}</p>
       <button @click="userStore.checkout">Checkout</button>
