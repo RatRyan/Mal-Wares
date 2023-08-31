@@ -1,46 +1,46 @@
 <template>
-  <Navbar></Navbar>
-  <div class="d-flex vh-100">
-    <div class="d-flex flex-column w-100 align-items-center">
-      <h2 class="pt-5">Welcome, {{ userStore.firstName }}</h2>
-      <div class="card m-3 w-50">
-        <div class="card-header">User Details</div>
-        <div class="card-body">
-          <p><b>First Name</b><br />{{ userStore.firstName }}</p>
-          <p><b>Last Name</b><br />{{ userStore.lastName }}</p>
-          <p><b>Email</b><br />{{ userStore.email }}</p>
+  <div class="dark-mode">
+    <Navbar></Navbar>
+    <div class="dark-mode d-flex justify-content-center align-items-center vh-100">
+      <div class="container">
+        <h2 class="text-center text-light mt-5 mb-4">Welcome, {{ userStore.firstName }}</h2>
+        <div class="card bg-dark text-light m-3">
+          <div class="card-header bg-secondary text-light">User Details</div>
+          <div class="card-body">
+            <p><strong class="text-light">First Name:</strong><br>{{ userStore.firstName }}</p>
+            <p><strong class="text-light">Last Name:</strong><br>{{ userStore.lastName }}</p>
+            <p><strong class="text-light">Email:</strong><br>{{ userStore.email }}</p>
+          </div>
         </div>
-      </div>
-      <div class="card m-3 w-50">
-        <div class="card-header">Orders</div>
-        <div style="overflow-y: auto; height: 20rem; position: sticky; top: 0%">
-          <table class="table table-hover">
-            <thead style="position: sticky; top: 0%">
-              <tr>
-                <th scope="col">Order #</th>
-                <th scope="col">Date</th>
-                <th scope="col">Total</th>
-              </tr>
-            </thead>
-            <tbody v-for="order in userStore.orders">
-              <Order
-                :number="order.number"
-                :date="order.date"
-                :total="order.cost"
-              ></Order>
-            </tbody>
-          </table>
+        <div class="card bg-dark text-light m-3">
+          <div class="card-header bg-secondary text-light">Orders</div>
+          <div class="card-body">
+            <table class="table table-dark table-hover">
+              <thead>
+                <tr >
+                  <th scope="col" class="text-light">Order #</th>
+                  <th scope="col" class="text-light">Date</th>
+                  <th scope="col" class="text-light">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <Order
+                  v-for="order in userStore.orders"
+                  :key="order.number"
+                  :number="order.number"
+                  :date="order.date"
+                  :total="order.cost"
+                ></Order>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
-      <div>
-        <button @click="userStore.logout()" class="btn btn-danger mb-5">
-          Logout
-        </button>
-        <RouterLink v-if="userStore.isAdmin" to="/admin">
-          <button @click="userStore.logout()" class="btn btn-warning mb-5 ms-3">
-            Admin Panel
-          </button>
-        </RouterLink>
+        <div class="mb-5">
+          <button @click="userStore.logout()" class="btn btn-danger">Logout</button>
+          <RouterLink v-if="userStore.isAdmin" to="/admin">
+            <button class="btn btn-warning ms-3">Admin Panel</button>
+          </RouterLink>
+        </div>
       </div>
     </div>
   </div>
@@ -55,4 +55,71 @@ import { useUserStore } from '../stores/UserStore';
 const userStore = useUserStore();
 </script>
 
-<style scoped></style>
+<style scoped>
+/* Your custom styles */
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  border-bottom: none;
+  font-weight: bold;
+}
+
+.card-header.bg-secondary {
+  background-color: #343a40;
+}
+
+.text-light {
+  color: #ffffff;
+}
+
+/* Additional specificity to override Bootstrap styles */
+.card .card-body p.text-light {
+  color: #ffffff;
+}
+
+.table th.text-light {
+  color: #ffffff;
+}
+
+.table-custom tbody tr {
+  background-color: #343a40; /* Clear Bootstrap's alternating row colors */
+}
+.table-custom tbody tr {
+  background-color: #121212;
+}
+
+.table-custom tbody tr:hover {
+  background-color: #242424;
+}
+
+.btn {
+  border-radius: 10px;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  border: none;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+}
+</style>
