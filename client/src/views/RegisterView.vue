@@ -38,7 +38,7 @@
           <button class="btn btn-primary mt-3" type="submit">Register</button>
         </form>
         <hr class="mt-4 mb-3" />
-        <RouterLink to="/login" class="text-muted">Already have an account? Login</RouterLink>
+        <RouterLink to="/login" class="text-light">Already have an account? Login</RouterLink>
       </div>
     </div>
   </div>
@@ -91,4 +91,5 @@ const registerUser = () => {
   color: red;
   min-height: 1.5em;
 }
+
 </style>

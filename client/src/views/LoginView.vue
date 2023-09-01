@@ -23,7 +23,7 @@
           <button class="btn btn-primary mt-3" type="submit">Login</button>
         </form>
         <hr class="mt-4 mb-3" />
-        <RouterLink to="/register" class="text-muted">Don't have an account? Register</RouterLink>
+        <RouterLink to="/register" class="text-light">Don't have an account? Register</RouterLink>
       </div>
     </div>
   </div>
