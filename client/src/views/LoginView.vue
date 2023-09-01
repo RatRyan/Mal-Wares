@@ -32,13 +32,17 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import { useUserStore } from '../stores/UserStore';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import Navbar from '../components/Navbar.vue';
 
 let email = ref('');
 let password = ref('');
 
 const user = useUserStore();
+
+onMounted(() => {
+  user.errorText = '';
+});
 
 const login = () => {
   user.login(email.value, password.value);
