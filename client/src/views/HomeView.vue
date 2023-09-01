@@ -26,8 +26,13 @@
 import { useProductsStore } from '../stores/ProductsStore';
 import Navbar from '../components/Navbar.vue';
 import Product from '../components/Product.vue';
+import { onMounted } from 'vue';
 
 const productsStore = useProductsStore();
+
+onMounted(async () => {
+  await productsStore.loadProducts();
+});
 </script>
 
 <style scoped>
